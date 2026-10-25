@@ -1,0 +1,416 @@
+:root {
+  color-scheme: light;
+  --paper: #f7f7f2;
+  --white: #fff;
+  --ink: #20251f;
+  --muted: #858b80;
+  --green: #315b41;
+  --green-light: #e6efe6;
+  --orange: #e7834c;
+  --line: #e8e9e1;
+  --shadow: 0 14px 45px rgb(43 54 39 / 6%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 8% 19%, rgb(229 238 224 / 68%), transparent 29rem),
+    var(--paper);
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.site-shell {
+  width: min(1120px, calc(100% - 48px));
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(49 91 65 / 10%);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+}
+
+.brand-light {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.brand-mark {
+  width: 33px;
+  height: 33px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: var(--green);
+  color: white;
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+}
+
+.cycle-badge {
+  padding: 9px 13px;
+  border: 1px solid rgb(49 91 65 / 12%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 68%);
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+main {
+  flex: 1;
+}
+
+.student-view {
+  padding: 68px 0 56px;
+}
+
+.intro {
+  max-width: 580px;
+  margin-bottom: 42px;
+}
+
+.eyebrow,
+.card-kicker {
+  margin: 0;
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 0 4px rgb(231 131 76 / 13%);
+}
+
+h1 {
+  margin: 15px 0 12px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(46px, 6vw, 66px);
+  line-height: 1.02;
+  letter-spacing: -2px;
+}
+
+h1 span {
+  color: var(--green);
+}
+
+.intro-copy {
+  max-width: 430px;
+  margin: 0;
+  color: #72796f;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.menu-layout {
+  display: grid;
+  grid-template-columns: minmax(290px, 0.88fr) minmax(0, 1.12fr);
+  align-items: start;
+  gap: 24px;
+}
+
+.card,
+.day-menu {
+  border: 1px solid rgb(49 91 65 / 7%);
+  border-radius: 18px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.calendar-card {
+  padding: 25px 24px 19px;
+}
+
+.calendar-heading,
+.selected-day-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calendar-heading h2,
+.selected-day-heading h2 {
+  margin: 7px 0 0;
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  letter-spacing: -0.4px;
+}
+
+.calendar-controls {
+  display: flex;
+  gap: 7px;
+}
+
+.icon-button {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: white;
+  color: var(--ink);
+  font-size: 23px;
+  line-height: 1;
+}
+
+.icon-button:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.weekday,
+.calendar-day {
+  display: grid;
+  place-items: center;
+}
+
+.weekday {
+  height: 30px;
+  color: #a1a69c;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.calendar-day {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-height: 40px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: #51574f;
+  font-size: 12px;
+}
+
+.calendar-day:hover:not(:disabled) {
+  background: #f0f3ed;
+}
+
+.calendar-day.outside {
+  color: #bfc3ba;
+}
+
+.calendar-day.today:not(.selected) {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.calendar-day.selected {
+  background: var(--green);
+  color: white;
+  font-weight: 700;
+}
+
+.today-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 17px;
+  padding: 13px 2px 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+  color: #777e73;
+  font-size: 12px;
+  text-align: left;
+}
+
+.cycle-day {
+  margin: 5px 0 0;
+  color: #8b9086;
+  font-size: 11px;
+}
+
+.today-button span {
+  color: var(--green);
+  font-size: 17px;
+}
+
+.day-menu {
+  min-height: 340px;
+  padding: 25px;
+}
+
+.menu-sparkle {
+  color: var(--orange);
+  font-size: 25px;
+}
+
+.menu-items {
+  display: grid;
+  gap: 9px;
+  margin-top: 23px;
+}
+
+.meal-card {
+  display: grid;
+  grid-template-columns: 39px 1fr;
+  align-items: start;
+  gap: 12px;
+  padding: 15px;
+  border: 1px solid #f0f0eb;
+  border-radius: 13px;
+  background: #fdfdfa;
+}
+
+.meal-icon {
+  width: 37px;
+  height: 37px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 17px;
+}
+
+.meal-card:nth-child(2) .meal-icon {
+  background: #fbefe6;
+  color: #c8743f;
+}
+
+.meal-card:nth-child(3) .meal-icon {
+  background: #f3eef7;
+  color: #826992;
+}
+
+.meal-card:nth-child(4) .meal-icon {
+  background: #edf0f8;
+  color: #66749a;
+}
+
+.meal-name {
+  margin: 1px 0 4px;
+  color: #8b9086;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.meal-description {
+  margin: 0;
+  color: #30372f;
+  font-size: 13px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 0 22px;
+  border-top: 1px solid rgb(49 91 65 / 10%);
+  color: #959a90;
+  font-size: 11px;
+}
+
+.footer-mark {
+  color: var(--green);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+@media (max-width: 720px) {
+  .site-shell {
+    width: min(100% - 32px, 520px);
+  }
+
+  .topbar {
+    height: 72px;
+  }
+
+  .student-view {
+    padding: 48px 0 40px;
+  }
+
+  .intro {
+    margin-bottom: 29px;
+  }
+
+  .menu-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .calendar-card,
+  .day-menu {
+    padding: 21px;
+  }
+
+  .calendar-day {
+    max-height: 43px;
+  }
+
+}
+
+@media (max-width: 390px) {
+  .site-shell {
+    width: calc(100% - 24px);
+  }
+
+  .brand {
+    font-size: 17px;
+  }
+
+  .calendar-card,
+  .day-menu {
+    padding: 18px 14px;
+  }
+}
